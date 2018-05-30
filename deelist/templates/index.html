@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>d. list</title>
+    </head>
+    <body>
+        <h1>Welcome to d. list.</h1>
+        {% for message in get_flashed_messages() %}
+            <p><b>Error</b>: {{ message }}</p>
+        {% endfor %}
+        {% if current_user.is_authenticated %}
+            <h2>Hi, {{ current_user.nickname }}!</h2>
+            <p><a href="{{ url_for('logout') }}">Logout</a></p>
+        {% else %}
+            <h2>I don't know you!</h2>
+            <p><a href="{{ url_for('oauth_authorize', provider='amazon') }}">Login with Amazon</a></p>
+        {% endif %}
+    </body>
+</html>
